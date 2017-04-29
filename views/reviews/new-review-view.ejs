@@ -1,9 +1,15 @@
 <h2> PRODUCT REVIEW </h2>
 
-<h3> <%= product.name %> </h3>
 
-<img src="<%= product.imageUrl %>" width="100%">
-
+<% if (typeof validationErrors !== 'undefined') {%>
+    <ul>
+        <% for (key in validationErrors) { %>
+            <li>
+                <%= validationErrors[key].message %>
+            </li>
+            <%  } %>
+    </ul>
+    <% } %>
 <form method="post" action="/products/<%= product._id %>/reviews">
 <label for="content-input"> Content </label>
 <textarea id="content-input" name="reviewContent"> </textarea>
@@ -18,3 +24,6 @@
 <br>
   <button> Submit Review </button>
 </form>
+
+<h3> <%= product.name %> </h3>
+<img src="<%= product.imageUrl %>" width="100%">

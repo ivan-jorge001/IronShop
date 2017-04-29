@@ -30,14 +30,17 @@ reviewRoutes.post('/products/:productId/reviews', (req, res, next) => {
 
         const theReview = newReview({
             content: req.body.reviewContent,
-            starts: req.body.reviewStars,
+            stars: req.body.reviewStars,
             author: req.body.reviewAuthor
         });
         theProduct.reviews.push(theReview);
 
         theProduct.save((err) => {
           if (err){
-            next(err);
+          res.render('reviews/new-review-view.ejs', {
+            product: theProduct,
+            validationErrors: theProduct.errors
+          });
             return;
           }
 

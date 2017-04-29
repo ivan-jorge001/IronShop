@@ -1,5 +1,15 @@
 <h2> Edit Product </h2>
 
+<% if (typeof errors !== 'undefined') {%>
+    <ul>
+        <% for (key in errors) { %>
+            <li>
+                <%= errors[key].message %>
+            </li>
+            <%  } %>
+    </ul>
+    <% } %>
+
   <!--                      /products/       77          -->
 <form method="post" action="/products/<%= product._id %>">
   <label for="product-name-input"> Product Name </label>
