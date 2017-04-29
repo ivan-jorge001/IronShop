@@ -1,0 +1,36 @@
+<!-- views/products/products-list-view.ejs -->
+
+<h2> Products List </h2>
+
+<ul>
+  <% products.forEach((oneProduct) => { %>
+    <li>
+      <%= oneProduct.name %> - $<%= oneProduct.price %>
+
+      <!-- OLD VERSION ===> using query strings                         -->
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <!--          /product-details?id=1788                            -->
+      <!-- <a href="/product-details?id=<%= oneProduct._id %>">         -->
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <!--   /products/        1788          -->
+      <a href="/products/<%= oneProduct._id %>">
+        View Details
+      </a>
+      <br>
+
+        <!--   /products/        1788         /edit -->
+      <a href="/products/<%= oneProduct._id %>/edit">
+        Edit
+      </a>
+
+      <form method="post" action="/product/<%= oneProduct._id %>/delete">
+        <button> Delete </button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+<a href="/products/new">
+  Add a Product
+</a>
