@@ -1,0 +1,26 @@
+<h1>we are in the review page</h1>
+
+<%if (typeof validationErrors !== 'undefined'){%>
+
+    <ul>
+        <%for (key in validationErrors){ %>
+      <li> <%= validationErrors[key].message%></li>
+    </ul>
+    <%} %>
+    <%} %>
+
+
+<form class="" action="/product/<%=product._id%>/reviews" method="post">
+  <label for="content-input">content</label>
+  <textarea id ="content-input" type="text" name="reviewContent"></textarea>
+  <br>
+  <label for="stars-input">Rating(1-5)</label>
+  <input id="stars-input" name="reviewStars" type="number">
+  <br>
+  <label for="author-input">your name</label>
+  <input id="author-input" name="reviewAuthor" type="text">
+
+  <button>Submit review</button>
+</form>
+<h3><%=product.name %></h3>
+<img src="<%= product.imageUrl%>" alt="">

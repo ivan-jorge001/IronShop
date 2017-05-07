@@ -1,37 +1,25 @@
-<h2> <%= product.name %> </h2>
+<h2><%=product.name %></h2>
 
-<img src="<%= product.imageUrl %>" width="100%">
-
-<h3> Price: $<%= product.price %> </h3>
-
-<p> <%= product.description %> </p>
-
-<br>
-<h3> User Reviews </h3>
-
-<%= product.review %>
-
-<ul>
-  <% product.reviews.forEach((oneReview) => { %>
-    <li>
-      <p> <%= oneReview.content %> </p>
-      <p> ⭐️ <%= oneReview.stars %> out of 5 ⭐️ </p>
-      <strong> <%= oneReview.author %> </strong>
-    </li>
-
-<%  }) %>
-</ul>
-
-<a href="/products/<%= product._id %>/reviews/new">
-Review This Product
-</a>
-<br>
-
-<a href="/products/<%= product._id %>/edit">
-Edit
-</a>
-<br>
-
-<form method="post" action="/product/<%= product._id %>/delete">
-  <button> Delete </button>
+<img src="<%=product.imageUrl %>" alt="">
+<h3>Price: <%=product.price %></h3>
+<p>
+    <%=product.description %>
+</p>
+<a href="/product/<%=product._id%>/reviews/new">Review Product</a>
+<form class="" action="/product/<%= product._id%>/delete" method="post">
+    <button>Delete</button>
 </form>
+<hr>
+<h3>User Reviews</h3>
+<ul>
+    <% product.reviews.forEach((oneReview) => { %>
+        <li>
+            <p>
+                <%=oneReview.content%>
+            </p>
+            <p>
+                <%=oneReview.stars%> out of 5 stars</p>
+            <strong><%=oneReview.author%></strong>
+        </li>
+        <%  }); %>
+</ul>

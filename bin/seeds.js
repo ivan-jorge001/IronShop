@@ -1,11 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose     = require('mongoose');
 
 mongoose.connect('mongodb://localhost/ironshop');
 
-const Product = require('../models/product-model.js');
+const Product = require('../models/products-models.js');
 
-
-const products = [
+ const products = [
   {
     name: 'Yoga Mat',
     price: 29.99,
@@ -25,27 +24,20 @@ const products = [
     description: 'You never have to leave your computer! All you can eat nutrition!',
   },
   {
-    name: 'Nintendo Switch',
+    name: 'nintendo switch',
     price: 299.99,
-    imageUrl: 'http://media.nintendo.com/nintendo/cocoon/switch-static-pages/switch/etRgxnAu0zRX4bmWnt9K628wG7YQUI6t/images/switch/buy-now/bundle_color_console.jpg',
-    description: 'More expensive if you want anything extra.',
-  },
-  {
-    name: 'Fender Stratocaster',
-    price: 999.99,
-    imageUrl: 'http://images.samash.com/sa/F56/F5602305X.fpx?cvt=jpg?cell=540,400&qlt=90&cvt=jpg',
-    description: 'That is the cheap one.'
+    imageUrl: 'http://i.imgur.com/5ICGeY0.jpg',
+    description: 'cool console to play game like whatever you want',
   }
+
 ];
 
-
-  // db.products.insertMany()
-Product.create(products, (err, productDocs) => {
+Product.create(products,(err, productDocs)=>{
   if (err) {
     throw err;
   }
 
-  productDocs.forEach((oneProduct) => {
-    console.log(`NEW PRODUCT ${oneProduct.name} -> ${oneProduct._id}`);
+  productDocs.forEach((oneproduct)=>{
+    console.log(`new product ${oneproduct.name} -> ${oneproduct._id}`);
   });
 });

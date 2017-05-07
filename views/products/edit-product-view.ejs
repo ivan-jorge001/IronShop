@@ -1,36 +1,19 @@
-<h2> Edit Product </h2>
+<h2>Edit Product</h2>
 
-<% if (typeof errors !== 'undefined') {%>
-    <ul>
-        <% for (key in errors) { %>
-            <li>
-                <%= errors[key].message %>
-            </li>
-            <%  } %>
-    </ul>
-    <% } %>
 
-  <!--                      /products/       77          -->
-<form method="post" action="/products/<%= product._id %>">
-  <label for="product-name-input"> Product Name </label>
-  <input  id="product-name-input" type="text"
-      name="productName" value="<%= product.name %>">
+<form class="" action="/products/<%=product._id%>" method="post">
+  <label for="product-name-input" value= "">Name: </label>
+  <input id="product-name-input" name="productName" value="<%=product.name%>" type="string">
   <br>
-
-  <label for="product-price-input"> Price </label>
-  <input  id="product-price-input" type="number"
-      name="productPrice" value="<%= product.price %>">
+  <label for="product-price-input" value= "">Price: </label>
+  <input id="product-price-input" name="productPrice" value="<%=product.price%>" type ="number">
   <br>
-
-  <label for="product-image-url-input"> Image Address </label>
-  <input  id="product-image-url-input" type="text"
-      name="productImageUrl" value="<%= product.imageUrl %>">
+  <label for="product-imageUrl-input" value= "">ImageUrl: </label>
+  <input id="product-imageUrl-input" name="productImageUrl" value="<%=product.imageUrl%>" type="string">
   <br>
+  <label for="product-description-input" value= "">Description</label>
+  <textarea id="product-description-input" name="productDescription"  type="string"><%=product.description%></textarea>
+<br>
+<button >submit</button>
 
-  <label   for="product-description-input"> Description </label>
-  <textarea id="product-description-input"
-      name="productDescription"><%= product.description %></textarea>
-  <br>
-
-  <button> Save </button>
 </form>

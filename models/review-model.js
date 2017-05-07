@@ -1,25 +1,24 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
-const reviewSchema = new Schema({
-  content: {
-    type: String,
-    required: [true, 'Please tell us about your review.'],
-    minlength: [50, 'Please write at least 50 characters.'],
-    maxlength: [400, 'Type less please.']
-  },
-  stars: {
-    type: Number,
-    required: [true, 'Rate the product.'],
-    min: [1, 'Ratings can be no lower than 1 star'],
-    max: [5, 'Ratings can be no better than 5 stars.']
-  },
-  author: {
-     type: String,
-     required: [true, 'Please provide your name']
-   },
 
+const reviewSchema = new Schema({
+    content: {
+        type: String,
+        required: [true,"please tell us about your review"],
+        minlength:[50,'please wrtie at 50 char'],
+        maxlength:400
+    },
+    stars: {
+        type: Number,
+        required: [true,'rate the product'],
+        min: [1,'rating can be no longer than 1 star'],
+        max: [5,'rating can be no longer than 5']
+    },
+    author: {
+        type: String,
+        required: [true,'please provide your name']
+    }
 });
 
 const Review = mongoose.model('Review', reviewSchema);

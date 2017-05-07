@@ -1,0 +1,9 @@
+<h2>Most Expensive results</h2>
+<% products.forEach((oneProduct)=>{ %>
+<li>
+<h3><%= oneProduct.name%></h3>
+<p>price:<%= oneProduct.price%></p>
+<a href="/product/<%= oneProduct._id%>">View details</a>
+</li>
+
+<% }); %>

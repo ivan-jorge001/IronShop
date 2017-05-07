@@ -7,8 +7,8 @@ const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 
-
 mongoose.connect('mongodb://localhost/ironshop');
+
 
 const app = express();
 
@@ -28,19 +28,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
-
-// ROUTES GO HERE
-// ----------------------------------------
+//ROUTES
+//=================================================
 const index = require('./routes/index');
 app.use('/', index);
 
-const productRoutes = require('./routes/product-routes.js');
-app.use('/', productRoutes);
+const productRoutes = require('./routes/product-route.js');
+app.use('/',productRoutes );
 
-const myReviewRoutes = require('./routes/review-routes.js');
-app.use('/', myReviewRoutes);
-// ----------------------------------------
-
+const reviewRoutes = require('./routes/review-routes.js');
+app.use('/',reviewRoutes);
+//=========================================================
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

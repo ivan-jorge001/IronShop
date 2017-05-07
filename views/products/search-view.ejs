@@ -1,29 +1,22 @@
-<h2> Search Products </h2>
-
-<form method="get" action="/search">
-  <label for="search-term-input"> Search by Name </label>
-  <input id="search-term-input" type="search" name="productSearchTerm">
-  <br>
-
-  <button> Search </button>
+<h2>Search Products</h2>
+<form class="" action="/search" method="get">
+<label for="search-term-input"></label>
+<input id="search-term-input" name="productSearchTerm" type="search">
+<button>Search</button>
 </form>
 
-<a href="/product/expensive"> Most Expensive Items </a>
-<a href="/products/value"> Best Value Items </a>
+<a href="/products/expensive">Most exprensive items</a>
+<a href="/products/value">Best Value Items</a>
 
+<% if (typeof products !=='undefined') {%>
+  <h2>results</h2>
 
-<% if (typeof products !== 'undefined') { %>
-  <h2> Results </h2>
+<% products.forEach((oneProduct)=>{ %>
+<li>
+<h3><%= oneProduct.name%></h3>
+<p>price:<%= oneProduct.price%></p>
+<a href="/product/<%= oneProduct._id%>">View details</a>
+</li>
 
-  <ul>
-    <% products.forEach((oneProduct) => { %>
-      <li>
-        <h3> <%= oneProduct.name %> </h3>
-        <p> Price: $<%= oneProduct.price %> </p>
-        <a href= "/products/<%= oneProduct._id %>">
-          View details
-        </a>
-      </li>
-  <%  }) %>
-</ul>
-<% } %>
+<% }); %>
+<%} %>

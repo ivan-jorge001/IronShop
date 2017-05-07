@@ -1,33 +1,25 @@
-<h2> Add a Product </h2>
+<h2> Adding a products</h2>
+<%if (typeof validationErrors !== 'undefined'){%>
 
-<% if (typeof errors !== 'undefined') {%>
     <ul>
-        <% for (key in errors) { %>
-            <li>
-                <%= errors[key].message %>
-            </li>
-            <%  } %>
+        <%for (key in validationErrors){ %>
+      <li> <%= validationErrors[key].message%></li>
     </ul>
-    <% } %>
+    <%} %>
+        <%} %>
 
-
-
-        <form method="post" action="/products/new">
-            <label for="product-name-input"> Product Name </label>
-            <input id="product-name-input" type="text" name="productName">
-            <br>
-
-            <label for="product-price-input"> Price </label>
-            <input id="product-price-input" type="number" name="productPrice">
-            <br>
-
-            <label for="product-image-url-input"> Image Address </label>
-            <input id="product-image-url-input" type="url" name="productImageUrl">
-            <br>
-
-            <label for="product-description-input"> Description </label>
-            <textarea id="product-description-input" name="productDescription"></textarea>
-            <br>
-
-            <button> Add Product </button>
-        </form>
+            <form action="/products/new" method="post">
+                <label for="product-name-input">Product Name: </label>
+                <input id="product-name-input" type="text" name="productName">
+                <br>
+                <label for="product-price-input"> Price: </label>
+                <input id="product-price-input" type="number" name="productPrice">
+                <br>
+                <label for="product-img-url-input">Image Address: </label>
+                <input id="product-img-url-input" type="url" name="productImageUrl">
+                <br>
+                <label for="product-description-input"> Description: </label>
+                <textarea id="product-description-input" name="productDescription"></textarea>
+                <br>
+                <button>Add Product</button>
+            </form>
